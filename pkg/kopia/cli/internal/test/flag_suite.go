@@ -67,14 +67,14 @@ func (t *FlagTest) assertLog(c *check.C, b *safecli.Builder) {
 }
 
 // Test runs the flag test.
-func (ft *FlagTest) Test(c *check.C, b *safecli.Builder) {
-	err := flag.Apply(b, ft.Flag)
-	if ft.ExpectedErr != nil {
-		ft.assertError(c, err)
+func (t *FlagTest) Test(c *check.C, b *safecli.Builder) {
+	err := flag.Apply(b, t.Flag)
+	if t.ExpectedErr != nil {
+		t.assertError(c, err)
 	} else {
-		ft.assertNoError(c, err)
-		ft.assertCLI(c, b)
-		ft.assertLog(c, b)
+		t.assertNoError(c, err)
+		t.assertCLI(c, b)
+		t.assertLog(c, b)
 	}
 }
 

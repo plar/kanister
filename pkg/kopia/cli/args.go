@@ -18,7 +18,7 @@ package cli
 
 // CommonArgs provides the common arguments for Kopia CLI.
 type CommonArgs struct {
-	ConfigFilePath string // the path to the config file. 
+	ConfigFilePath string // the path to the config file.
 	LogDirectory   string // the directory where logs are stored.
 	LogLevel       string // the level of logging. Default is "error".
 	RepoPassword   string // the password for the repository.
