@@ -1,8 +1,6 @@
 package test
 
 import (
-	"strings"
-
 	"gopkg.in/check.v1"
 
 	"github.com/pkg/errors"
@@ -42,17 +40,14 @@ func (t *FlagTest) CheckCommentString() string {
 // setDefaultExpectedLog sets the default value for ExpectedLog based on ExpectedCLI.
 func (t *FlagTest) setDefaultExpectedLog() {
 	if len(t.ExpectedLog) == 0 && len(t.ExpectedCLI) > 0 {
-		t.ExpectedLog = strings.Join(t.ExpectedCLI, " ")
+		t.ExpectedLog = RedactCLI(t.ExpectedCLI)
 	}
 }
 
 // assertError checks the error against ExpectedErr.
 func (t *FlagTest) assertError(c *check.C, err error) {
-	if actualErr := errors.Cause(err); actualErr != nil {
-		c.Assert(actualErr, check.Equals, t.ExpectedErr, t)
-	} else {
-		c.Assert(err, check.Equals, t.ExpectedErr, t)
-	}
+	actualErr := errors.Cause(err)
+	c.Assert(actualErr, check.Equals, t.ExpectedErr, t)
 }
 
 // assertNoError makes sure there is no error.
