@@ -56,7 +56,7 @@ var _ = check.Suite(test.NewFlagSuite([]test.FlagTest{
 		ExpectedCLI: []string{"--cache-directory=/home/user/.cache/kopia"},
 	},
 	{
-		Name: "Empty ConfigFilePath should generate a flag with default value",
+		Name: "Empty ConfigFilePath should not generate a flag",
 		Flag: ConfigFilePath(""),
 	},
 	{
